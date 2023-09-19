@@ -1,0 +1,76 @@
+:root {
+
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+* {
+
+}
+
+h2 {
+    margin: 0;
+    margin-top: 10px;
+    font-size: 32px;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-image: url(assets/background-img.jpg);
+}
+
+.header {
+    flex: 1;
+}
+
+.projectsGrid {
+    border: 1px solid black;
+    flex: 6;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 320px);
+    grid-auto-rows: 1fr;
+    gap: 40px;
+    justify-items: center;
+    padding: 20px;
+}
+
+.projectCard {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+    background-color: white;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 15px;
+    padding: 25px 15px;
+}
+
+.projectCard > h2 {
+    font-weight: 700;
+}
+
+.tasksWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.taskCard {
+    font-size: 19px;
+    box-shadow: 0px 0px 15px -8px black;
+    border: 1px solid gray;
+    background-color: white;
+    text-align: start;
+    border-radius: 15px;
+    padding: 5px 10px ;
+}
