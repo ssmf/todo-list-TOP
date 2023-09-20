@@ -8,8 +8,9 @@ import { createTask } from "./modules/createTask.js";
 
 const mainProfile = new Profile('blossm');
 createProject('Daily routine');
+createProject('Daily routine');
 createTask('Daily routine', '2 odin lessons', 'very important, your main task of the day', new Date("2023-09-22"), 3, false);
-console.table(mainProfile.projects)
-console.table(mainProfile.projects.find((task) => task.name == 'Daily routine').tasks)
+
+console.log(mainProfile.projects)
 
 export {mainProfile}

@@ -7,5 +7,6 @@ export class Task {
         this.dueDate = new Date(2007, 'January', 12);
         this.priority = 1;
         this.ifDone = false;
+        this.DomElement = '';
     }
-}
+};

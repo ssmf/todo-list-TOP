@@ -1,5 +1,6 @@
 import {Task} from '../modules/tasks.js'
 import {mainProfile} from '../index.js'
+import { createElementDOM } from "./createDomElement.js";
 
 export function createTask(targetProjectName, title, description, dueDate, priority, ifDone) {
     let newTask = new Task();
@@ -12,4 +13,24 @@ export function createTask(targetProjectName, title, description, dueDate, prior
 
     const targetProject = mainProfile.projects.find((project) => project.name == targetProjectName);
     targetProject.tasks.push(newTask);
+
+    const taskWrapper = targetProject.DomElement.querySelector('#task-wrapper');
+
+    (function addTaskDOM() {
+        const newTask = createElementDOM('button', 'taskCard', 'task-card');
+        taskWrapper.appendChild(newTask);
+
+        const taskTitle = createElementDOM('p', 'task-title', 'task-title-display');
+        taskTitle.textContent = title;
+        newTask.appendChild(taskTitle);
+        
+    })();
+
+    (function moveAddTaskButton() {
+        const currentAddTaskButton = taskWrapper.querySelector('#add-task-button');
+        const addTaskButtonClone = currentAddTaskButton.cloneNode(true);
+        currentAddTaskButton.remove()
+        taskWrapper.appendChild(addTaskButtonClone);
+    })();
+
 };
