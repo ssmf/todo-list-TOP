@@ -66,6 +66,7 @@ export function createModule(ifNew, taskData = null, projectName) {
             let priorityButton = createElementDOM('input', `priority${num}`, `priority-${num}`);
             priorityButton.setAttribute('type', 'radio');
             priorityButton.setAttribute('name', 'priority');
+            priorityButton.setAttribute('value', `${num}`);
             let priorityLabel = createElementDOM('label', 'priorityLabel');
             priorityLabel.setAttribute('for', `priority-${num}`);
             priorityLabel.textContent = num;
@@ -94,6 +95,11 @@ export function createModule(ifNew, taskData = null, projectName) {
         priority3Wrapper.appendChild(priority3Text);
     })();
 
+    (function addReq() {
+        const objlist = [titleInput, descriptionInput, dueDateInput, document.querySelector('#priority-1')];
+        objlist.forEach(e => {e.required = true});
+    })();
+
     const submitButton = createElementDOM('button', 'addBtn btnMain', 'module-submit-btn');
     submitButton.textContent = '+ Create';
     submitButton.setAttribute('type', 'submit');
@@ -105,5 +111,16 @@ export function createModule(ifNew, taskData = null, projectName) {
             taskModule.remove();
         });
     })();
+
+    if (ifNew == false) {
+
+    }
+    else {
+        //FOR TESTING PURPOSES ONLY
+        titleInput.defaultValue = 'Boilerplate Title';
+        descriptionInput.defaultValue = 'Boilerplate Description';
+        dueDateInput.defaultValue = '2023-10-25';
+        document.getElementById('priority-2').setAttribute('checked', 'checked');
+    }
 
 };

@@ -35,7 +35,7 @@ h2 {
     border: 1px solid black;
     flex: 6;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 320px);
+    grid-template-columns: repeat(auto-fill, 320px);
     grid-auto-rows: .6fr;
     gap: 40px;
     padding: 20px;
@@ -99,6 +99,15 @@ h2 {
 .btnMain:hover {
     background-color: darkviolet;
     color: white;
+}
+
+.projectCard.addProject {
+    padding: 0;
+    background-color: transparent;
+}
+
+.addProjectBtn {
+    background-color: white;
 }
 
 .btnTask:hover {
@@ -189,13 +198,19 @@ input[type='radio']:focus {
     background-color: #b2f2bb;
 }
 
+.prioritySign1 {color: #80f38f;}
+
 .priority2:checked {
     background-color: #ffec99;
 }
 
+.prioritySign2 {color:rgb(255, 213, 24);}
+
 .priority3:checked {
     background-color: #ffc9c9;
 }
+
+.prioritySign3 {color: rgb(255, 143, 143);}
 
 .priority1:hover, .priority2:hover, .priority3:hover, label:hover {
     cursor: pointer;

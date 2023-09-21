@@ -18,12 +18,23 @@ export function createTask(targetProjectName, title, description, dueDate, prior
     const taskWrapper = targetProject.DomElement.querySelector('#task-wrapper');
 
     (function addTaskDOM() {
-        const newTask = createElementDOM('button', 'taskCard', 'task-card');
-        taskWrapper.appendChild(newTask);
+        const newTaskDOM = createElementDOM('div', 'taskCard', 'task-card');
+        taskWrapper.appendChild(newTaskDOM);
+
+        (function editTaskBind() {
+            newTaskDOM.addEventListener('click', () => {
+                createModule(false, newTask, newTask.title);
+            });
+        })();
 
         const taskTitle = createElementDOM('p', 'task-title', 'task-title-display');
         taskTitle.textContent = title;
-        newTask.appendChild(taskTitle);
+        newTaskDOM.appendChild(taskTitle);
+
+        const priorityCircle = createElementDOM('span', 'prioritySign', 'priority-sign');
+        priorityCircle.classList.add(`prioritySign${priority}`);
+        priorityCircle.textContent = `⬤ `;
+        taskTitle.prepend(priorityCircle);
         
     })();
 
@@ -33,7 +44,7 @@ export function createTask(targetProjectName, title, description, dueDate, prior
         currentAddTaskButton.remove()
         taskWrapper.appendChild(addTaskButtonClone);
 
-        addTaskButtonClone.addEventListener('click', () => {createModule(true, null, targetProjectName);});
+        addTaskButtonClone.addEventListener('click', () => {createModule(true, null, targetProject.name)});
     })();
 
 };
