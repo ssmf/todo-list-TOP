@@ -20,7 +20,7 @@ h2 {
 }
 
 .container {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -35,11 +35,12 @@ h2 {
     border: 1px solid black;
     flex: 6;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 320px);
+    grid-template-columns: repeat(auto-fit, 320px);
     grid-auto-rows: .6fr;
     gap: 40px;
     padding: 20px;
     align-items: start;
+    justify-content: center;
 }
 
 .projectCard {
@@ -52,10 +53,6 @@ h2 {
     width: 100%;
     border-radius: 15px;
     padding: 20px;
-}
-
-.addProjectBtn {
-    
 }
 
 .projectCard > h2 {
@@ -94,11 +91,12 @@ h2 {
     cursor: pointer;
 }
 
-.btnProject {
+.btnMain {
     font-weight: 700;
+    font-size: 19px;
 }
 
-.btnProject:hover {
+.btnMain:hover {
     background-color: darkviolet;
     color: white;
 }
@@ -106,4 +104,110 @@ h2 {
 .btnTask:hover {
     background-color: black;
     color: white;
+}
+
+.overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.taskModule {
+    text-align: center;
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: 1px solid black;
+    width: max(25%, 400px);
+    border-radius: 15px;
+}
+
+.taskModuleForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.textFieldInput {
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, .8);
+}
+
+.descriptionInput {
+   height: auto;
+   min-height: 200px;
+   resize: none;
+}
+
+.priorityOptionsWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.priorityWrapper {
+    position: relative;
+    width: 30%;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    outline: solid black thin;
+}
+
+input[type='radio'] {
+    -webkit-appearance: none; /*to disable the default appearance of radio button*/
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+input[type='radio']:focus {
+    outline: none;
+}
+
+.priorityLabel {
+    position: absolute;
+    right: 47%;
+    bottom: 68%;
+    user-select: none;
+}
+
+.priority1, .priority2, .priority3 {
+    opacity: .8;
+}
+
+.priority1:checked {
+    background-color: #b2f2bb;
+}
+
+.priority2:checked {
+    background-color: #ffec99;
+}
+
+.priority3:checked {
+    background-color: #ffc9c9;
+}
+
+.priority1:hover, .priority2:hover, .priority3:hover, label:hover {
+    cursor: pointer;
+}
+
+.projectTitle {
+    border-radius: 8px;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+}
+
+.projectTitle:focus {
+    outline: none;
+    border: 1px solid black;
 }

@@ -1,6 +1,7 @@
 import {Task} from '../modules/tasks.js'
 import {mainProfile} from '../index.js'
 import { createElementDOM } from "./createDomElement.js";
+import { createModule } from './createModule.js';
 
 export function createTask(targetProjectName, title, description, dueDate, priority, ifDone) {
     let newTask = new Task();
@@ -31,6 +32,8 @@ export function createTask(targetProjectName, title, description, dueDate, prior
         const addTaskButtonClone = currentAddTaskButton.cloneNode(true);
         currentAddTaskButton.remove()
         taskWrapper.appendChild(addTaskButtonClone);
+
+        addTaskButtonClone.addEventListener('click', () => {createModule(true, null, targetProjectName);});
     })();
 
 };
