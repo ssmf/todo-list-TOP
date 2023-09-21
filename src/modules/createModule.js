@@ -20,6 +20,10 @@ export function createModule(ifNew, taskData = null, projectName) {
                 taskFormData.get('priority'),
             false);
 
+            if (ifNew == false) {
+                taskData.DomElement.remove();
+            }
+
             overlay.remove();
             taskModule.remove();
         });
@@ -113,7 +117,10 @@ export function createModule(ifNew, taskData = null, projectName) {
     })();
 
     if (ifNew == false) {
-
+        titleInput.defaultValue = taskData.title;
+        descriptionInput.defaultValue = taskData.description;
+        dueDateInput.defaultValue = taskData.dueDate;
+        document.getElementById(`priority-${taskData.priority}`).setAttribute('checked', 'checked');
     }
     else {
         //FOR TESTING PURPOSES ONLY

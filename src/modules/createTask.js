@@ -20,10 +20,11 @@ export function createTask(targetProjectName, title, description, dueDate, prior
     (function addTaskDOM() {
         const newTaskDOM = createElementDOM('div', 'taskCard', 'task-card');
         taskWrapper.appendChild(newTaskDOM);
+        newTask.DomElement = newTaskDOM; //Assigning dom element as a property of an object
 
         (function editTaskBind() {
             newTaskDOM.addEventListener('click', () => {
-                createModule(false, newTask, newTask.title);
+                createModule(false, newTask, targetProjectName);
             });
         })();
 
@@ -46,5 +47,4 @@ export function createTask(targetProjectName, title, description, dueDate, prior
 
         addTaskButtonClone.addEventListener('click', () => {createModule(true, null, targetProject.name)});
     })();
-
 };
