@@ -19,23 +19,39 @@ export function createTask(targetProjectName, title, description, dueDate, prior
 
     (function addTaskDOM() {
         const newTaskDOM = createElementDOM('div', 'taskCard', 'task-card');
+        const editButton = createElementDOM('button', 'taskTitle', 'task-title');
+        const ifDoneButton = createElementDOM('input', 'ifDoneButton', 'if-done-button');
+        ifDoneButton.setAttribute('type', 'checkbox');
+        ifDoneButton.setAttribute('name', 'ifDone');
+
+        ifDoneButton.addEventListener('change', () => {
+            newTask.ifDone = !newTask.ifDone;
+            ifDoneToggle(newTask.ifDone);
+        });
+
+        newTaskDOM.appendChild(editButton);
+        newTaskDOM.appendChild(ifDoneButton);
         taskWrapper.appendChild(newTaskDOM);
-        newTask.DomElement = newTaskDOM; //Assigning dom element as a property of an object
+        newTask.DomElement = newTaskDOM; // Assigning dom element as a property of an object
 
         (function editTaskBind() {
-            newTaskDOM.addEventListener('click', () => {
-                createModule(false, newTask, targetProjectName);
+            editButton.addEventListener('click', () => {
+                createModule(false, newTask, targetProject.name);
             });
         })();
 
-        const taskTitle = createElementDOM('p', 'task-title', 'task-title-display');
+        const taskTitle = createElementDOM('p', 'taskTitle', 'task-title-display');
         taskTitle.textContent = title;
-        newTaskDOM.appendChild(taskTitle);
+        editButton.appendChild(taskTitle);
 
         const priorityCircle = createElementDOM('span', 'prioritySign', 'priority-sign');
         priorityCircle.classList.add(`prioritySign${priority}`);
         priorityCircle.textContent = `⬤ `;
         taskTitle.prepend(priorityCircle);
+
+        function ifDoneToggle(currentIfDone) {
+            (!currentIfDone) ? newTask.DomElement.classList.remove('Done') : newTask.DomElement.classList.add('Done'); 
+        }
         
     })();
 

@@ -63,16 +63,35 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    text-align: start;
 }
 
 .taskCard {
-    font-size: 19px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     box-shadow: 0px 0px 15px -8px black;
     border: 1px solid gray;
     background-color: white;
-    text-align: start;
     border-radius: 15px;
     padding: 5px 10px ;
+}
+
+.taskTitle {
+    border: 0;
+    background-color: transparent;
+    font-size: 19px;
+}
+
+.Done {
+    text-decoration: line-through;
+    opacity: .5;
+}
+
+.ifDoneButton {
+    width: 15px;
+    height: 15px;
+    margin-right: 7px;
 }
 
 .taskCard p {
@@ -179,7 +198,7 @@ input[type='radio'] {
     border-radius: 8px;
 }
 
-input[type='radio']:focus {
+input[type='radio']:focus, input[type='checkbox']:focus {
     outline: none;
 }
 
