@@ -5,6 +5,8 @@ import {Task} from './modules/tasks.js'
 
 import { createProject } from "./modules/createProject.js";
 import { createTask } from "./modules/createTask.js";
+import { createTaskDetailsDisplay } from "./modules/taskDetailsDisplay.js";
+import { createElementDOM } from './modules/createDomElement.js';
 
 import { createModule } from './modules/createModule.js';
 

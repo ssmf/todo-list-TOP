@@ -2,6 +2,7 @@ import {Task} from '../modules/tasks.js'
 import {mainProfile} from '../index.js'
 import { createElementDOM } from "./createDomElement.js";
 import { createModule } from './createModule.js';
+import { createTaskDetailsDisplay } from './taskDetailsDisplay.js';
 
 export function createTask(targetProjectName, title, description, dueDate, priority, ifDone = false) {
     let newTask = new Task();
@@ -57,6 +58,28 @@ export function createTask(targetProjectName, title, description, dueDate, prior
             ifDoneToggle(ifDone);
             ifDoneButton.checked = true;
         };
+
+        (function hoverDetails() {
+            editButton.addEventListener('mouseenter', () => {
+                const currentDetailsDisplay = createTaskDetailsDisplay(newTask);
+
+                function trackMouse(e) {
+                    currentDetailsDisplay.style.left = `${e.clientX}px`;
+                    currentDetailsDisplay.style.top = `${e.clientY}px`;
+                };
+
+                document.addEventListener('mousemove', trackMouse);
+
+                editButton.addEventListener('mouseleave', () => {
+                    setTimeout(currentDetailsDisplay.classList.add('taskDetailsNotVisible', 0))
+                    setTimeout(() => {
+                        currentDetailsDisplay.remove();
+                        document.removeEventListener('mousemove', trackMouse);
+                    }, 200);
+                });
+            });
+        })();
+        
         
     })();
 

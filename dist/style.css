@@ -67,6 +67,7 @@ h2 {
 }
 
 .taskCard {
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -75,12 +76,22 @@ h2 {
     background-color: white;
     border-radius: 15px;
     padding: 5px 10px ;
+    gap: 5px;
+    
 }
 
 .taskTitle {
+    max-width: 85%;
     border: 0;
     background-color: transparent;
     font-size: 19px;
+    text-align: start;
+    overflow-wrap: break-word;
+}
+
+.taskTitle p {
+    overflow-wrap: break-word;
+    width: 100%;
 }
 
 .Done {
@@ -91,7 +102,9 @@ h2 {
 .ifDoneButton {
     width: 15px;
     height: 15px;
-    margin-right: 7px;
+    margin: 0px;
+    margin: 10px;
+    box-sizing: border-box;
 }
 
 .taskCard p {
@@ -217,17 +230,23 @@ input[type='radio']:focus, input[type='checkbox']:focus {
     background-color: #b2f2bb;
 }
 
+.priority1Details {background-color: #80f38f;}
+
 .prioritySign1 {color: #80f38f;}
 
 .priority2:checked {
     background-color: #ffec99;
 }
 
+.priority2Details {background-color: #ffec99}
+
 .prioritySign2 {color:rgb(255, 213, 24);}
 
 .priority3:checked {
     background-color: #ffc9c9;
 }
+
+.priority3Details {background-color: #ffc9c9;}
 
 .prioritySign3 {color: rgb(255, 143, 143);}
 
@@ -243,5 +262,55 @@ input[type='radio']:focus, input[type='checkbox']:focus {
 
 .projectTitle:focus {
     outline: none;
+    border: 1px solid black;
+}
+
+.taskDetails {
+    opacity: 0;
+    transition: opacity .2s; 
+    position: fixed;
+    transform: translate(0%, -100%);
+    border-radius: 15px;
+    border: 2px solid black;
+    padding: 20px;
+    font-size: 17px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.doneTask {opacity: .5}
+.notDoneTask { opacity: 1;}
+.taskDetailsNotVisible {opacity: 0;}
+
+.taskDetails p {margin: 0px;}
+
+.mainTextWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.otherDetailsWrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    padding: 5px;
+}
+
+.detailsTitle {
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.detailsDescription {
+    overflow-wrap:  break-word;
+}
+
+.detailsDateValue {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
     border: 1px solid black;
 }
