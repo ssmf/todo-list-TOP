@@ -1,8 +1,14 @@
 import { createElementDOM } from "./createDomElement";
 import { createTask } from "./createTask";
+import { Task } from "./tasks";
 
 
 export function createModule(ifNew, taskData = null, projectName) {
+
+    if (ifNew == true) {
+        taskData = new Task();
+        taskData.ifDone = false;
+    };
 
     const overlay = createElementDOM('div', 'overlay', 'overlay');
 
@@ -18,7 +24,8 @@ export function createModule(ifNew, taskData = null, projectName) {
                 taskFormData.get('description'),
                 taskFormData.get('dueDate'),
                 taskFormData.get('priority'),
-            false);
+                taskData.ifDone
+            );
 
             if (ifNew == false) {
                 taskData.DomElement.remove();

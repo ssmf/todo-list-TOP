@@ -3,7 +3,7 @@ import {mainProfile} from '../index.js'
 import { createElementDOM } from "./createDomElement.js";
 import { createModule } from './createModule.js';
 
-export function createTask(targetProjectName, title, description, dueDate, priority, ifDone) {
+export function createTask(targetProjectName, title, description, dueDate, priority, ifDone = false) {
     let newTask = new Task();
     
     newTask.title = title || newTask.title;
@@ -52,6 +52,11 @@ export function createTask(targetProjectName, title, description, dueDate, prior
         function ifDoneToggle(currentIfDone) {
             (!currentIfDone) ? newTask.DomElement.classList.remove('Done') : newTask.DomElement.classList.add('Done'); 
         }
+
+        if (ifDone == true) {
+            ifDoneToggle(ifDone);
+            ifDoneButton.checked = true;
+        };
         
     })();
 
