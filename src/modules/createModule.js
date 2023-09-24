@@ -128,8 +128,10 @@ export function createModule(ifNew, taskData = null, projectName) {
         descriptionInput.defaultValue = taskData.description;
         dueDateInput.defaultValue = taskData.dueDate;
         document.getElementById(`priority-${taskData.priority}`).setAttribute('checked', 'checked');
+        moduleHeading.textContent = 'Edit Task';
     }
     else {
+        moduleHeading.textContent = 'Create Task';
         //FOR TESTING PURPOSES ONLY
         titleInput.defaultValue = 'Boilerplate Title';
         descriptionInput.defaultValue = 'Boilerplate Description';

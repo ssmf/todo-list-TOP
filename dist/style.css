@@ -11,6 +11,7 @@ html, body {
 
 * {
     font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    transition: background-color .2s, color .2s;
 }
 
 h2 {
@@ -25,6 +26,8 @@ h2 {
     display: flex;
     flex-direction: column;
     background-image: url(assets/background-img.jpg);
+    background-size: cover;
+    background-position: 50%;
 }
 
 .header {
@@ -32,7 +35,6 @@ h2 {
 }
 
 .projectsGrid {
-    border: 1px solid black;
     flex: 6;
     display: grid;
     grid-template-columns: repeat(auto-fill, 320px);
@@ -53,6 +55,8 @@ h2 {
     width: 100%;
     border-radius: 15px;
     padding: 20px;
+    border: 2px solid black;
+    box-shadow: 0px 0px 20px -8px #F2CA46;
 }
 
 .projectCard > h2 {
@@ -105,6 +109,7 @@ h2 {
     margin: 0px;
     margin: 10px;
     box-sizing: border-box;
+    box-shadow: none;
 }
 
 .taskCard p {
@@ -117,6 +122,7 @@ h2 {
     padding: 15px;
     border-radius: 25px;
     background-color: white;
+    box-shadow: 0px 0px 20px -8px black;
 }
 
 .addBtn:hover {
@@ -129,17 +135,22 @@ h2 {
 }
 
 .btnMain:hover {
-    background-color: darkviolet;
-    color: white;
+    background-color: #F2CA46;
 }
 
 .projectCard.addProject {
     padding: 0;
     background-color: transparent;
+    box-shadow: none;
+    border: none;
 }
 
 .addProjectBtn {
     background-color: white;
+}
+
+.btnTask {
+    box-shadow: 0px 0px 20px -8px black;
 }
 
 .btnTask:hover {
@@ -175,6 +186,10 @@ h2 {
     gap: 20px;
 }
 
+input {
+    box-shadow: 0px 0px 20px -8px black;
+}
+
 .textFieldInput {
     padding: 10px;
     font-size: 20px;
@@ -186,6 +201,11 @@ h2 {
    height: auto;
    min-height: 200px;
    resize: none;
+   box-shadow: 0px 0px 20px -8px black;
+}
+
+.dueDateInput {
+    box-shadow: none;
 }
 
 .priorityOptionsWrapper {
