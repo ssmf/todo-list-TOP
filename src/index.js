@@ -1,23 +1,9 @@
-import {Profile} from './modules/profile.js'
-
-import {Project} from './modules/projects.js'
-import {Task} from './modules/tasks.js'
-
-import { createProject } from "./modules/createProject.js";
-import { createTask } from "./modules/createTask.js";
-import { createTaskDetailsDisplay } from "./modules/taskDetailsDisplay.js";
-import { createElementDOM } from './modules/createDomElement.js';
-
-import { createModule } from './modules/createModule.js';
-
+import { Profile } from './modules/profile.js';
+import { retrieveLocalData } from './modules/retrieveData.js';
 import { bindAddProject } from './modules/eventBinds.js';
 
 const mainProfile = new Profile('blossm');
 export {mainProfile};
-
-
+retrieveLocalData();
 
 bindAddProject(mainProfile);
-
-
-console.log(mainProfile.projects)

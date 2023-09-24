@@ -24,7 +24,9 @@ export function createModule(ifNew, taskData = null, projectName) {
                 taskFormData.get('description'),
                 taskFormData.get('dueDate'),
                 taskFormData.get('priority'),
-                taskData.ifDone
+                taskData.ifDone,
+                false,
+                ifNew
             );
 
             if (ifNew == false) {

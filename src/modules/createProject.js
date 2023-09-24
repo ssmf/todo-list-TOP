@@ -4,10 +4,16 @@ import { createElementDOM } from "./createDomElement.js";
 import { bindAddProject } from "./eventBinds.js";
 import { createModule } from "./createModule.js";
 
-export function createProject(name = 'CHANGE ME!') {
+export function createProject(name = 'CHANGE ME!', readLocalData = false) {
     let newProject = new Project;
     newProject.name = name;
     mainProfile.projects.push(newProject);
+
+    if (readLocalData == false) {
+    let projectArr = JSON.parse(localStorage.getItem('Projects'));
+    projectArr.push(newProject);
+    localStorage.setItem('Projects', JSON.stringify(projectArr));
+    };
 
     const projectGrid = document.getElementById('project-grid');
     const currentProjectCard = createElementDOM('div', 'projectCard', 'project-card');
@@ -21,7 +27,13 @@ export function createProject(name = 'CHANGE ME!') {
     (function getNewTitle() {
         title.addEventListener('input', () => {
             newProject.name = title.textContent;
-        })
+            if (readLocalData == false) {
+            let projectArr = JSON.parse(localStorage.getItem('Projects'));
+            projectArr.splice(projectArr.indexOf(newProject), 1);
+            projectArr.push(newProject);
+            localStorage.setItem('Projects', JSON.stringify(projectArr));
+            };
+        });
     })();
 
     const taskWrapper = createElementDOM('div', 'tasksWrapper', 'task-wrapper');

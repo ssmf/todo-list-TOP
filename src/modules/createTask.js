@@ -4,7 +4,7 @@ import { createElementDOM } from "./createDomElement.js";
 import { createModule } from './createModule.js';
 import { createTaskDetailsDisplay } from './taskDetailsDisplay.js';
 
-export function createTask(targetProjectName, title, description, dueDate, priority, ifDone = false) {
+export function createTask(targetProjectName, title, description, dueDate, priority, ifDone = false, readLocalData = false, ifNew) {
     let newTask = new Task();
     
     newTask.title = title || newTask.title;
@@ -14,7 +14,23 @@ export function createTask(targetProjectName, title, description, dueDate, prior
     newTask.ifDone = ifDone || newTask.ifDone;
 
     const targetProject = mainProfile.projects.find((project) => project.name == targetProjectName);
-    targetProject.tasks.push(newTask);
+    if (ifNew == true) {
+        targetProject.tasks.push(newTask);
+    }
+    else {
+        const currentTask = targetProject.tasks.find(e => e.title == title);
+        console.log(currentTask);
+        targetProject.tasks[targetProject.tasks.indexOf(currentTask)] = newTask;
+    };
+
+    console.log(targetProject.tasks);
+
+    if (readLocalData == false) {
+    let projectArr = JSON.parse(localStorage.getItem('Projects'));
+    projectArr.splice(projectArr.indexOf(targetProject), 1);
+    projectArr.push(targetProject);
+    localStorage.setItem('Projects', JSON.stringify(projectArr));
+    };
 
     const taskWrapper = targetProject.DomElement.querySelector('#task-wrapper');
 
